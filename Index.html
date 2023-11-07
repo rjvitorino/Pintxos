@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pintxos Poll</title>
+</head>
+<body>
+<h2>Pintxos Poll</h2>
+<form id="pintxosForm">
+    <div id="pintxosOptions">
+        <!-- Pintxos options will be loaded here -->
+    </div>
+    <button type="submit">Submit</button>
+</form>
+
+<script>
+// List of pintxos from your menu
+const pintxos = [
+    { name: 'Ibéric', description: 'Iberian ham with bread and tomato' },
+    { name: 'Gernika', description: 'Crab cream with tobiko' },
+    // ... Add the rest of the pintxos here
+];
+
+// Load pintxos options to the form
+function loadPintxos() {
+    const optionsContainer = document.getElementById('pintxosOptions');
+    pintxos.forEach((pintxo, index) => {
+        optionsContainer.innerHTML += `
+            <label for="pintxo${index}">${pintxo.name}: ${pintxo.description}</label>
+            <input type="number" id="pintxo${index}" name="${pintxo.name}" min="0" value="0"><br/>
+        `;
+    });
+}
+
+// Save to local storage
+function saveToLocalStorage(data) {
+    for (const [key, value] of Object.entries(data)) {
+        localStorage.setItem(key, value);
+    }
+}
+
+// Handle form submission
+document.getElementById('pintxosForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const formProps = Object.fromEntries(formData);
+    saveToLocalStorage(formProps);
+});
+
+// Initial load of pintxos options
+loadPintxos();
+</script>
+</body>
+</html>
