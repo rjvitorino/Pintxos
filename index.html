@@ -14,6 +14,13 @@
     </div>
     <button type="submit">Submit</button>
 </form>
+<div id="successMessage" style="display: none;">
+    <h3>Success! You've submitted the following pintxos:</h3>
+        <ul id="submittedPintxos">
+                <!-- Submitted pintxos will be displayed here -->
+        </ul>
+    </div>
+</div>
 
 <script>
 // Pintxos data in JSON format
@@ -118,6 +125,24 @@ function saveToLocalStorage(data) {
     }
 }
 
+// Function to display the success message
+function displaySuccessMessage(submittedPintxos) {
+    const successMessage = document.getElementById('successMessage');
+    const submittedPintxosList = document.getElementById('submittedPintxos');
+    submittedPintxosList.innerHTML = '';
+            
+    for (const [name, quantity] of Object.entries(submittedPintxos)) {
+        if (quantity > 0) {
+            const listItem = document.createElement('li');
+            listItem.textContent = `${name}: ${quantity}`;
+            submittedPintxosList.appendChild(listItem);
+        }
+    }
+
+    successMessage.style.display = 'block';
+}
+
+    
 // Handle form submission
 document.getElementById('pintxosForm').addEventListener('submit', function(event) {
     event.preventDefault();
