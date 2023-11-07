@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pintxos Poll</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <h2>Pintxos Poll</h2>
@@ -15,17 +16,94 @@
 </form>
 
 <script>
-// List of pintxos from your menu
-const pintxos = [
-    { name: 'Ibéric', description: 'Iberian ham with bread and tomato' },
-    { name: 'Gernika', description: 'Crab cream with tobiko' },
-    // ... Add the rest of the pintxos here
+// Pintxos data in JSON format
+const pintxosData = [
+    {
+        "name": "Ibéric",
+        "description": "Iberian ham with bread and tomato"
+    },
+    {
+        "name": "Gernika",
+        "description": "Crab cream with tobiko"
+    },
+    {
+        "name": "Truita",
+        "description": "Potato omelette with onion"
+    },
+    {
+        "name": "Ptxti Zizpuru",
+        "description": "Salmon roll with dreams of cheese and leeks"
+    },
+    {
+        "name": "Boll D'Steak Tartar",
+        "description": "Steak tartare with chipotle mayonnaise"
+    },
+    {
+        "name": "Iñaki",
+        "description": "Tuna taco marinated with hoisin mayonnaise"
+    },
+    {
+        "name": "Txiki",
+        "description": "Seitan on pasta sheet with tomato and Kalamata olive"
+    },
+    {
+        "name": "Donosti",
+        "description": "Toasted bread with marinated tuna and sour cream"
+    },
+    {
+        "name": "Rizolari",
+        "description": "Cecina roll with parmesan and lettuce"
+    },
+    {
+        "name": "Ubola",
+        "description": "Prawn roll with mushrooms"
+    },
+    {
+        "name": "Truita de Bacallà",
+        "description": "Cod omelette with confit"
+    },
+    {
+        "name": "Francès",
+        "description": "Mini croissant with crab cream"
+    },
+    {
+        "name": "Bidasoa",
+        "description": "Marinated salmon tataki with avocado and its caviar"
+    },
+    {
+        "name": "Arantxa",
+        "description": "Skewer of prawns and mushrooms with bacon"
+    },
+    {
+        "name": "Txistorra",
+        "description": "Chistorra from Navarre"
+    },
+    {
+        "name": "Getaria",
+        "description": "Cod with pepper and Txakoli sauce"
+    },
+    {
+        "name": "Serranito",
+        "description": "Loin on the grill with Iberian ham, manchego cheese, and peppers"
+    },
+    {
+        "name": "Txirimir",
+        "description": "Semi-cured Camembert with caramelized apple and truffled honey"
+    },
+    {
+        "name": "San Fermin",
+        "description": "Roasted chicken with piquillo pepper and goat cheese"
+    },
+    {
+        "name": "Tolosa",
+        "description": "Mini burger with cheese, caramelized onion, and tomato"
+    }
 ];
 
 // Load pintxos options to the form
 function loadPintxos() {
     const optionsContainer = document.getElementById('pintxosOptions');
-    pintxos.forEach((pintxo, index) => {
+    pintxosData.forEach((pintxo, index) => {
         optionsContainer.innerHTML += `
             <label for="pintxo${index}">${pintxo.name}: ${pintxo.description}</label>
             <input type="number" id="pintxo${index}" name="${pintxo.name}" min="0" value="0"><br/>
