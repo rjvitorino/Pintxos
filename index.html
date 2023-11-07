@@ -1,158 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pintxos Poll</title>
-<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pintxos Poll</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<h2>Pintxos Poll</h2>
-<form id="pintxosForm">
-    <div id="pintxosOptions">
-        <!-- Pintxos options will be loaded here -->
-    </div>
-    <button type="submit">Submit</button>
-</form>
-<div id="successMessage" style="display: none;">
-    <h3>Success! You've submitted the following pintxos:</h3>
-        <ul id="submittedPintxos">
+    <h2>Pintxos Poll</h2>
+    <div class="container">
+        <form id="pintxosForm">
+            <div id="pintxosOptions">
+                <!-- Pintxos options will be loaded here -->
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+        <div id="successMessage" style="display: none;">
+            <h3>Success! You've submitted the following pintxos:</h3>
+            <ul id="submittedPintxos">
                 <!-- Submitted pintxos will be displayed here -->
-        </ul>
+            </ul>
+        </div>
     </div>
-</div>
 
-<script>
-// Pintxos data in JSON format
-const pintxosData = [
-    {
-        "name": "Ibéric",
-        "description": "Iberian ham with bread and tomato"
-    },
-    {
-        "name": "Gernika",
-        "description": "Crab cream with tobiko"
-    },
-    {
-        "name": "Truita",
-        "description": "Potato omelette with onion"
-    },
-    {
-        "name": "Ptxti Zizpuru",
-        "description": "Salmon roll with dreams of cheese and leeks"
-    },
-    {
-        "name": "Boll D'Steak Tartar",
-        "description": "Steak tartare with chipotle mayonnaise"
-    },
-    {
-        "name": "Iñaki",
-        "description": "Tuna taco marinated with hoisin mayonnaise"
-    },
-    {
-        "name": "Txiki",
-        "description": "Seitan on pasta sheet with tomato and Kalamata olive"
-    },
-    {
-        "name": "Donosti",
-        "description": "Toasted bread with marinated tuna and sour cream"
-    },
-    {
-        "name": "Rizolari",
-        "description": "Cecina roll with parmesan and lettuce"
-    },
-    {
-        "name": "Ubola",
-        "description": "Prawn roll with mushrooms"
-    },
-    {
-        "name": "Truita de Bacallà",
-        "description": "Cod omelette with confit"
-    },
-    {
-        "name": "Francès",
-        "description": "Mini croissant with crab cream"
-    },
-    {
-        "name": "Bidasoa",
-        "description": "Marinated salmon tataki with avocado and its caviar"
-    },
-    {
-        "name": "Arantxa",
-        "description": "Skewer of prawns and mushrooms with bacon"
-    },
-    {
-        "name": "Txistorra",
-        "description": "Chistorra from Navarre"
-    },
-    {
-        "name": "Getaria",
-        "description": "Cod with pepper and Txakoli sauce"
-    },
-    {
-        "name": "Serranito",
-        "description": "Loin on the grill with Iberian ham, manchego cheese, and peppers"
-    },
-    {
-        "name": "Txirimir",
-        "description": "Semi-cured Camembert with caramelized apple and truffled honey"
-    },
-    {
-        "name": "San Fermin",
-        "description": "Roasted chicken with piquillo pepper and goat cheese"
-    },
-    {
-        "name": "Tolosa",
-        "description": "Mini burger with cheese, caramelized onion, and tomato"
-    }
-];
+    <script>
+        // Pintxos data in JSON format
+        const pintxosData = [
+            {
+                "name": "Ibéric",
+                "description": "Iberian ham with bread and tomato"
+            },
+            {
+                "name": "Gernika",
+                "description": "Crab cream with tobiko"
+            },
+            {
+                "name": "Truita",
+                "description": "Potato omelette with onion"
+            },
+            {
+                "name": "Ptxti Zizpuru",
+                "description": "Salmon roll with dreams of cheese and leeks"
+            },
+            {
+                "name": "Boll D'Steak Tartar",
+                "description": "Steak tartare with chipotle mayonnaise"
+            },
+            {
+                "name": "Iñaki",
+                "description": "Tuna taco marinated with hoisin mayonnaise"
+            },
+            {
+                "name": "Txiki",
+                "description": "Seitan on pasta sheet with tomato and Kalamata olive"
+            },
+            {
+                "name": "Donosti",
+                "description": "Toasted bread with marinated tuna and sour cream"
+            },
+            {
+                "name": "Rizolari",
+                "description": "Cecina roll with parmesan and lettuce"
+            },
+            {
+                "name": "Ubola",
+                "description": "Prawn roll with mushrooms"
+            },
+            {
+                "name": "Truita de Bacallà",
+                "description": "Cod omelette with confit"
+            },
+            {
+                "name": "Francès",
+                "description": "Mini croissant with crab cream"
+            },
+            {
+                "name": "Bidasoa",
+                "description": "Marinated salmon tataki with avocado and its caviar"
+            },
+            {
+                "name": "Arantxa",
+                "description": "Skewer of prawns and mushrooms with bacon"
+            },
+            {
+                "name": "Txistorra",
+                "description": "Chistorra from Navarre"
+            },
+            {
+                "name": "Getaria",
+                "description": "Cod with pepper and Txakoli sauce"
+            },
+            {
+                "name": "Serranito",
+                "description": "Loin on the grill with Iberian ham, manchego cheese, and peppers"
+            },
+            {
+                "name": "Txirimir",
+                "description": "Semi-cured Camembert with caramelized apple and truffled honey"
+            },
+            {
+                "name": "San Fermin",
+                "description": "Roasted chicken with piquillo pepper and goat cheese"
+            },
+            {
+                "name": "Tolosa",
+                "description": "Mini burger with cheese, caramelized onion, and tomato"
+            }
+            // Add more pintxos data here
+        ];
 
-// Load pintxos options to the form
-function loadPintxos() {
-    const optionsContainer = document.getElementById('pintxosOptions');
-    pintxosData.forEach((pintxo, index) => {
-        optionsContainer.innerHTML += `
-            <label for="pintxo${index}">${pintxo.name}: ${pintxo.description}</label>
-            <input type="number" id="pintxo${index}" name="${pintxo.name}" min="0" value="0"><br/>
-        `;
-    });
-}
-
-// Save to local storage
-function saveToLocalStorage(data) {
-    for (const [key, value] of Object.entries(data)) {
-        localStorage.setItem(key, value);
-    }
-}
-
-// Function to display the success message
-function displaySuccessMessage(submittedPintxos) {
-    const successMessage = document.getElementById('successMessage');
-    const submittedPintxosList = document.getElementById('submittedPintxos');
-    submittedPintxosList.innerHTML = '';
-            
-    for (const [name, quantity] of Object.entries(submittedPintxos)) {
-        if (quantity > 0) {
-            const listItem = document.createElement('li');
-            listItem.textContent = `${name}: ${quantity}`;
-            submittedPintxosList.appendChild(listItem);
+        // Load pintxos options to the form
+        function loadPintxos() {
+            const optionsContainer = document.getElementById('pintxosOptions');
+            pintxosData.forEach((pintxo, index) => {
+                optionsContainer.innerHTML += `
+                    <label for="pintxo${index}">${pintxo.name}: ${pintxo.description}</label>
+                    <input type="number" id="pintxo${index}" name="${pintxo.name}" min="0" value="0"><br/>
+                `;
+            });
         }
-    }
 
-    successMessage.style.display = 'block';
-}
+        // Save to local storage
+        function saveToLocalStorage(data) {
+            for (const [key, value] of Object.entries(data)) {
+                localStorage.setItem(key, value);
+            }
+        }
 
-    
-// Handle form submission
-document.getElementById('pintxosForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    const formData = new FormData(event.target);
-    const formProps = Object.fromEntries(formData);
-    saveToLocalStorage(formProps);
-});
+        // Function to display the success message
+        function displaySuccessMessage(submittedPintxos) {
+            const successMessage = document.getElementById('successMessage');
+            const submittedPintxosList = document.getElementById('submittedPintxos');
+            submittedPintxosList.innerHTML = '';
 
-// Initial load of pintxos options
-loadPintxos();
-</script>
+            for (const [name, quantity] of Object.entries(submittedPintxos)) {
+                if (quantity > 0) {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = `${name}: ${quantity}`;
+                    submittedPintxosList.appendChild(listItem);
+                }
+            }
+
+            successMessage.style.display = 'block';
+        }
+
+        // Handle form submission
+        document.getElementById('pintxosForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const formProps = Object.fromEntries(formData);
+            saveToLocalStorage(formProps);
+            displaySuccessMessage(formProps);
+        });
+
+        // Initial load of pintxos options
+        loadPintxos();
+    </script>
 </body>
 </html>
